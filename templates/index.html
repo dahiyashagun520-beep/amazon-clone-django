@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Amazon Clone</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <!-- FIRST NAVBAR -->
+    
+    <nav class="navbar">
+
+        <!-- Amazon Logo -->
+        <div class="logo nav-border">
+            <img src="{% static 'images/amazon_logo.png' %}" alt="Amazon">
+        </div>
+
+        <!-- Delivery Location -->
+        <div class="location nav-border">
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="location-text">
+                <small>Delivering to Sonipat 131001</small>
+                <strong>Update location</strong>
+            </div>
+        </div>
+        
+
+        <!-- Search Bar -->
+        <div class="dropdown_box">
+            <select name="category" aria-label="Search category">
+                <option value="all">All</option>
+                <option value="books">Books</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+            </select>
+
+            <input
+                type="text"
+                class="search_box"
+                placeholder="Search Amazon.in"
+                aria-label="Search Amazon.in"
+            >
+
+            <button class="magnifying_icon" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <!-- Language -->
+        <div class="language nav-border">
+            <span class="india-flag">🇮🇳</span>
+            <strong>EN</strong>
+            <i class="fa-solid fa-caret-down"></i>
+        </div>
+
+        <!-- Account & Lists -->
+        <div class="account nav-border">
+            <span>Hello, sign in</span>
+            <strong>
+                Account &amp; Lists
+                <i class="fa-solid fa-caret-down"></i>
+            </strong>
+        </div>
+
+        <!-- Returns & Orders -->
+        <div class="orders nav-border">
+            <span>Returns</span>
+            <strong>&amp; Orders</strong>
+        </div>
+
+        <!-- Cart -->
+        <div class="cart nav-border">
+            <div class="cart-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>0</span>
+            </div>
+            <div>
+                <strong>Cart</strong>
+            </div>
+        </div>
+
+   
+
+    </nav>
+
+    <!-- SECOND NAVBAR -->
+
+    <nav class="sub-navbar">
+
+        <div class="all-menu">
+            <i class="fa-solid fa-bars"></i>
+            <strong>All</strong>
+        </div>
+
+        <div>Amazon Pay</div>
+        <div>Mobiles</div>
+        <div>Today's Deals</div>
+        <div>Coupons</div>
+        <div>Flights</div>
+        <div>Electronics</div>
+        <div>Computers</div>
+        <div>Video Games</div>
+        <div>New Releases</div>
+
+    </nav>  
+
+    <!-- SIDEBAR OVERLAY -->
+
+    <div class="sidebar-overlay"></div>
+
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <!-- Sidebar Header -->
+
+        <div class="sidebar-header">
+
+            <div class="sidebar-user">
+                <i class="fa-solid fa-circle-user"></i>
+                <strong>Hello, sign in</strong>
+            </div>
+
+            <button class="close-sidebar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <!-- Sidebar Content -->
+
+        <div class="sidebar-content">
+
+            {% for section in products %}
+
+                <h2>{{ section.title }}</h2>
+
+                {% for item in section.items %}
+
+                    <a href="#">
+
+                        <span>{{ item.name }}</span>
+
+                        {% if item.arrow %}
+                            <i class="fa-solid fa-chevron-right"></i>
+                        {% endif %}
+
+                    </a>
+
+                {% endfor %}
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <!-- Main content of your page -->
+
+    {% include 'footer.html' %}
+
+</body>
+
+</html>
+
